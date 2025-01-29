@@ -1,40 +1,40 @@
-# API接口文档
+# API interface documentation
 
 [English](API.md)
 
-可以通过调用API接口，使用可编程的方式生成短链接
+You can generate short links programmatically by calling the API interface
 
-### 接口调用地址
+### Interface call address
 
-自行部署的CloudFlare Worker地址，例如：https://url.dem0.workers.dev 或是自行绑定的域名
+Self-deployed CloudFlare Worker address, for example: https://url.dem0.workers.dev or a self-bound domain name
 
-### 调用方式：HTTP POST 请求格式: JSON
-示例：
+### Calling method: HTTP POST Request format: JSON
+Example:
 ```
 {
-	"url": "https://example.com"
+"url": "https://example.com"
 }
 ```
 
-### 请求参数:
+### Request parameters:
 
-| 参数名 | 类型 | 说明 |是否必须|示例|
+| Parameter name | Type | Description | Required|Example|
 | :----:| :----: | :----: | :----: | :----: |
-| url | string | 网址（需包括http://或https://) |必须|https://example.com|
+| url | string | URL (must include http:// or https://) |Required|https://example.com|
 
-### 响应示例 (JSON)：
+### Response example (JSON):
 
 ```
 {
-    "status": 200,
-    "key": "/demo"
+"status": 200,
+"key": "/demo"
 }
 ```
 
-### 响应参数:
-| 参数名 | 类型 | 说明 |示例|
+### Response parameters:
+| Parameter name | Type | Description | Example|
 | :----:| :----: | :----: | :----: |
-|status|int|	状态码：200为调用成功|200|	
-|key|string|	短链接后缀：需要自行添加域名前缀|/xxxxxx|
+|status|int| Status code: 200 means successful call|200|
+|key|string| Short link suffix: You need to add the domain name prefix yourself|/xxxxxx|
 
-注：接口只会返回短链接对应的key值，实际使用中需要添加对应的域名前缀，如：示例中返回的key参数是 "/demo" ，则我们需要添加 "https://url.dem0.workers.dev" 作为前缀，将其补全成完整的url即可使用，即：https://url.dem0.workers.dev/demo
+Note: The interface will only return the key value corresponding to the short link. In actual use, you need to add the corresponding domain name prefix. For example, if the key parameter returned in the example is "/demo", we need to add "https://url.dem0.workers.dev" as the prefix and complete it into a complete URL for use, that is: https://url.dem0.workers.dev/demo
